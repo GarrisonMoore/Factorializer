@@ -40,11 +40,37 @@ def input_integer(prompt:str='Please, input an integer.\n'):
     Keyword Args:
         prompt (str): The prompt string printed into the console.
     """
+    while True:
+        try:
+            user_input = input(prompt)
+            print(f"You entered: '{user_input}'")
 
-    user_input = input(prompt)
+            if user_input.startswith("-"):
+                wrong_input = True
+                raise ValueError(f"Invalid input :'{user_input}'. Must be a positive integer.")
 
-    # startwith
-    # isnumeric
+            elif not user_input.isnumeric():
+                wrong_input = True
+                raise TypeError(f"Invalid input :'{user_input}'. Not of integer type.")
 
+            else:
+                wrong_input = False
+
+            user_input = int(user_input)
+
+        except TypeError as error:
+            print(error)
+
+        except ValueError as error:
+            print(error)
+
+        else:
+            print(f"Valid Input '{user_input}' processed.")
+            break
+        finally:
+            if wrong_input:
+                print("Try again")
+            else:
+                print("Process completed.")
 
 input_integer()
