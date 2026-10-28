@@ -44,6 +44,7 @@ def input_integer(prompt:str='Please, input an integer.\n'):
 
     # While true loop to keep trying if the user enters incorrect values
     while True:
+        # wrong_input = False
         # try the user input prompt
         try:
             user_input = input(prompt)
@@ -62,6 +63,10 @@ def input_integer(prompt:str='Please, input an integer.\n'):
                 wrong_input = True
                 # Raise custom TypeError
                 raise TypeError(f"Invalid input :'{user_input}'. Not of integer type.")
+
+            elif int(user_input) >= 998:
+                wrong_input = True
+                raise ValueError(f"That number is too large, try a smaller number.")
 
             else:
                 # Assign false to wrong_input
@@ -83,7 +88,6 @@ def input_integer(prompt:str='Please, input an integer.\n'):
         else:
             print(f"Valid Input '{user_input}' processed.")
             break
-
         finally:
             # print err message if wrong input boolean is True
             if wrong_input:
@@ -93,6 +97,6 @@ def input_integer(prompt:str='Please, input an integer.\n'):
                 print(f"\nFactorial of '{user_input}': {final_factorial}")
                 print("Process completed successfully.")
 
-        return user_input
+    return user_input
 
 input_integer()
