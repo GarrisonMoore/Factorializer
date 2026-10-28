@@ -103,7 +103,7 @@ def input_integer(prompt:str='Please, input an integer.\n'):
             if wrong_input:
                 print("Try again\n")
             # Or print success message and results
-            else:
+            elif final_factorial is not None:
                 print(f"\nFactorial of '{user_input}': {final_factorial}")
                 print("Process completed successfully.")
 
