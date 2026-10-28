@@ -44,7 +44,8 @@ def input_integer(prompt:str='Please, input an integer.\n'):
 
     # While true loop to keep trying if the user enters incorrect values
     while True:
-        # wrong_input = False
+        wrong_input = True
+        final_factorial = None
         # try the user input prompt
         try:
             user_input = input(prompt)
@@ -83,6 +84,15 @@ def input_integer(prompt:str='Please, input an integer.\n'):
         # Except handle the ValueError
         except ValueError as error:
             print(error)
+
+        except KeyboardInterrupt:
+            print("\nKeyboard Interrupt Detected, returning to input.")
+
+        except BaseException as error:
+            if isinstance(error, KeyboardInterrupt):
+                print("Keyboard Interrupt detected")
+            else:
+                print(f"Unexpected error {error}")
 
         # Else print invalid input message and break loop
         else:
